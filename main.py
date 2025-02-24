@@ -1,44 +1,37 @@
-from stats import word_count
+import sys
+from stats import (
+    get_num_words,
+    chars_dict_to_sorted_list,
+    get_chars_dict,
+)
 
 def main():
-    book = 'books/frankenstein.txt'
-    with open(book) as f:
-        file_contents = f.read()
-        print(f"--- Begin report of {book} ---")
-        wc = word_count(file_contents)
-        cc = character_count(file_contents)
-        sorted_cc = dict_to_list(cc)
+    if len(sys.argv) < 2:
+        print("Usage: python main.py <path_to_book>")
+        sys.exit(1)
+    book_path = sys.argv[1]
 
-        book_report(wc, sorted_cc)
-        print("--- End report ---")
+    text = get_book_text(book_path)
+    num_words = get_num_words(text)
+    chars_dict = get_chars_dict(text)
+    chars_sorted_list = chars_dict_to_sorted_list(chars_dict)
+    print_report(book_path, num_words, chars_sorted_list)
 
-def character_count(book_content):
-    count = {}
-    book_content = book_content.lower()
-    for i in range(0, len(book_content)):
-        if book_content[i].isalpha():
-            if book_content[i] in count:
-                count[book_content[i]] += 1
-            else:
-                count[book_content[i]] = 1
+def get_book_text(path):
+    with open(path) as f:
+        return f.read()
 
-    return count
+def print_report(book_path, num_words, chars_sorted_list):
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {book_path}...")
+    print("----------- Word Count ----------")
+    print(f"Found {num_words} total words")
+    print("--------- Character Count -------")
+    for item in chars_sorted_list:
+        if not item["char"].isalpha():
+            continue
+        print(f"{item['char']}: {item['num']}")
 
-def book_report(word_count, character_count):
-    print(f"{word_count} words found in the document")
-    print("")
-    for char in character_count:
-        print(f"The '{char['char']}' character was found {char['count']} times")
-
-def dict_to_list(dictionary):
-    list_of_dict = []
-    for d in dictionary:
-        list_of_dict.append({"char": d, "count": dictionary[d]})
-
-    list_of_dict.sort(reverse=True, key=sort_on)
-    return list_of_dict
-
-def sort_on(dictionary):
-    return dictionary["count"]
+    print("============= END ===============")
 
 main()
