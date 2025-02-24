@@ -1,12 +1,13 @@
 #+TITLE: Book Bot
 
-This is just a simple Python application that creates a RSS feed aggregator aka ~Gator~.
+This is just a simple Python application that gives you various statistics of
+books that you have.
 
 This program was created while following along with the course on [[https://www.boot.dev/u/maker2413][Boot.dev]].
 
-To run Gator you will need to do the following:
+To run Bookbot you will need to do the following:
 #+begin_src shell
-  go run . login <user>
+  # add some books in a directory called "books"
 
-  go run .
+  python3 main.py
 #+end_src

@@ -1,3 +1,5 @@
+from stats import word_count
+
 def main():
     book = 'books/frankenstein.txt'
     with open(book) as f:
@@ -9,9 +11,6 @@ def main():
 
         book_report(wc, sorted_cc)
         print("--- End report ---")
-
-def word_count(book_content):
-    return len(book_content.split())
 
 def character_count(book_content):
     count = {}
