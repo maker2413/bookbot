@@ -13,7 +13,7 @@ Title: Moby Dick; Or, The Whale
 Author: Herman Melville
 
 Release date: July 1, 2001 [eBook #2701]
-                Most recently updated: January 19, 2025
+                Most recently updated: September 8, 2025
 
 Language: English
 
@@ -22310,3 +22310,4 @@ This website includes information about Project Gutenberg™,
 including how to make donations to the Project Gutenberg Literary
 Archive Foundation, how to help produce our new eBooks, and how to
 subscribe to our email newsletter to hear about new eBooks.
+
